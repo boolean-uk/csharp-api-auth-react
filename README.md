@@ -1,10 +1,20 @@
-# Getting Started with Create React App
+# C# API Auth - React UI
 
 ## Environment Variables Setup
 you'll need a .env text file in the root of the directory with the following e.g.
 ```
 REACT_APP_API_URL = 'https://localhost:7233/login'
 ```
+
+## Project Description
+This project will serve as a UI for the [C# JWT Auth Repo](https://github.com/boolean-uk/csharp-api-auth).  Run this as another application in VS Code and configure to login to the api back end.
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
