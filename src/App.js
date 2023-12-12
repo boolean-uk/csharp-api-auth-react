@@ -1,14 +1,11 @@
 
 import './App.css';
 import { jwtDecode } from "jwt-decode";
-import Cookies from 'universal-cookie';
 import { useState } from 'react';
 
 
 function App() {
-
-  const cookies = new Cookies();
-  
+ 
   const[user, setUser] = useState(null);
   const[formData, setFormData] = useState({
     username:'',
@@ -21,7 +18,7 @@ function App() {
     console.log()
     //process.env.REACT_APP_API_URL'
 
-    fetch(process.env.REACT_APP_API_URL, {
+    fetch(process.env.REACT_APP_API_URL + process.env.REACT_APP_API_LOGIN, {
       method: 'POST',
       body: JSON.stringify(formData),        
       headers: {
@@ -32,7 +29,7 @@ function App() {
       .then((user) => {
         const decoded = jwtDecode(user.data);       
         setUser(decoded);
-        cookies.set('jwt_authorization', user.data, {
+        localStorage.setItem('jwt_authorization', user.data, {
           expires: new Date(decoded.exp * 1000), 
         });
       })      
@@ -56,7 +53,7 @@ function App() {
   const logout = () => {
       
       setUser(null)
-      cookies.remove('jwt_authorization')
+      localStorage.removeItem('jwt_authorization')
   };
  
   
